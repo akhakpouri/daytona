@@ -5,7 +5,7 @@ namespace Daytona
 {
     public interface IRepository<T> : IReadOnlyRepository<T> where T : AuditableEntity
     {
-        void Delete(int id);
-        Task<int> Save(T entity);
+        Task Delete(int id);
+        void Save(T entity);
     }
 }
