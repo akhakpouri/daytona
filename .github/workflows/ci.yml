@@ -15,4 +15,4 @@ jobs:
         with:
           dotnet-version: "5.0.301"
       - run: dotnet build src/Daytona.sln
-      - run: dotnet test src/Daytoan.Test/Daytona.test.csproj
+      - run: dotnet test src/Daytona.Test/Daytona.Test.csproj
