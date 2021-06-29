@@ -1,0 +1,17 @@
+name: .NET Build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: .NET 5 Application
+    steps:
+      - uses: action/checkout@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.301"
+      - run: dotnet build
