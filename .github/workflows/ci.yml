@@ -1,4 +1,4 @@
-name: .NET Build
+name: Build & Pack
 on:
   push:
     branches:
@@ -14,5 +14,9 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: "5.0.301"
-      - run: dotnet build src/Daytona.sln
-      - run: dotnet test src/Daytona.Test/Daytona.Test.csproj
+      - name: Restore Dependencies
+        run: dotnet restore src/Daytona.sln
+      - name: Build Solution
+        run: dotnet build src/Daytona.sln -- configuration Release --no-restore
+      - name: Unit Test
+        run: dotnet test src/Daytona.Test/Daytona.Test.csproj
