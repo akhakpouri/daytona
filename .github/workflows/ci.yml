@@ -1,9 +1,8 @@
-name: Build & Test
+name: Build & Pack
 on:
   push:
     branches:
       - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,5 +17,9 @@ jobs:
         run: dotnet restore src/Daytona.sln
       - name: Build Solution
         run: dotnet build src/Daytona.sln -- configuration Release --no-restore
-      - name: Unit Test
-        run: dotnet test src/Daytona.Test/Daytona.Test.csproj
+      - name: Pack Solution
+        run: dotnet pack src/Daytona/Daytona.csproj -p:PackageVersion=${{github.run_id}}.${{github.run_number}} -c Release -o out
+      - name: Push Package
+        run: |
+          dotnet nuget add source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --name github --username ${{ github.repository_owner }} --password ${{ github.package_token }} --store-password-in-clear-text
+          dotnet nuget push **/*.nupkg --source github
