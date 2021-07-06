@@ -21,5 +21,5 @@ jobs:
         run: dotnet pack src/Daytona/Daytona.csproj -p:PackageVersion=${{github.run_id}}.${{github.run_number}} -c Release -o out
       - name: Push Package
         run: |
-          dotnet nuget add source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --name github --username ${{ github.repository_owner }} --password ${{ github.package_token }} --store-password-in-clear-text
+          dotnet nuget add source --name github --username ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
           dotnet nuget push **/*.nupkg --source github
