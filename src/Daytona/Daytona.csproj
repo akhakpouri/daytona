@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>62d2d1b1-ce9c-4def-bc7c-4f9466db7722</UserSecretsId>
+    <Company>Khakpouri</Company>
+    <Authors>Ali Khakpouri</Authors>
+    <Copyright>@copy; 2021</Copyright>
+    <PackageProjectUrl>khakpouri.net</PackageProjectUrl>
+    <Product>Common Library</Product>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Description>
+      This product is a common library and it is used for the Atlantis web and api intefaces.
+    </Description>
+    <AssemblyName>Daytona</AssemblyName>
+    <RepositoryUrl>https://github.com/akhakpouri/daytona.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
