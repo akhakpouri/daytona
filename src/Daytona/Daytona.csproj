@@ -12,7 +12,7 @@
     <Description>
       This product is a common library and it is used for the Atlantis web and api intefaces.
     </Description>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <AssemblyName>Daytona</AssemblyName>
     <RepositoryUrl>https://github.com/akhakpouri/daytona.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -24,6 +24,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.7" />
