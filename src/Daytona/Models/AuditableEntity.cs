@@ -13,9 +13,9 @@ namespace Daytona.Models
         public DateTime ModifiedDate { get; set; }
     }
 
-    public class AuditableEntityEntityConfiguration<TAuditableEntity> : IEntityTypeConfiguration<TAuditableEntity> where TAuditableEntity : AuditableEntity
+    public class AuditableEntityConfiguration<TAuditableEntity> : IEntityTypeConfiguration<TAuditableEntity> where TAuditableEntity : AuditableEntity
     {
-        public void Configure(EntityTypeBuilder<TAuditableEntity> builder)
+        public virtual void Configure(EntityTypeBuilder<TAuditableEntity> builder)
         {
             builder.HasKey(b => b.Id);
             builder.Property(b => b.CreatedBy).HasMaxLength(100).IsRequired();
