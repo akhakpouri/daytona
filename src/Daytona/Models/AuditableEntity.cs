@@ -13,7 +13,7 @@ namespace Daytona.Models
         public DateTime ModifiedDate { get; set; }
     }
 
-    public abstract class AuditableEntityEntityConfiguration<TAuditableEntity> : IEntityTypeConfiguration<TAuditableEntity> where TAuditableEntity : AuditableEntity
+    public class AuditableEntityEntityConfiguration<TAuditableEntity> : IEntityTypeConfiguration<TAuditableEntity> where TAuditableEntity : AuditableEntity
     {
         public void Configure(EntityTypeBuilder<TAuditableEntity> builder)
         {
