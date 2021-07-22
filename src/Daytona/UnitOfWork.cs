@@ -14,6 +14,10 @@ namespace Daytona
         protected TDbContext Context { get; private set; }
         protected IUserAccessor UserAccessor { get; set; }
 
+        protected UnitOfWork(TDbContext context)
+        {
+            Context = context;
+        }
 
         public async Task Commit()
         {
