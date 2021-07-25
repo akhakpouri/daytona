@@ -31,14 +31,14 @@ namespace Daytona
 
         protected void AuditableCommitHook(EntityEntry entry)
         {
-            if (!(entry.Entity is AuditableEntity entity)) return;
+            if (entry.Entity is not AuditableEntity entity) return;
 
             entity.ModifiedBy = UserAccessor.UserName ?? "_unknown";
             entity.ModifiedDate = DateTime.UtcNow;
 
             if (entry.State == EntityState.Added)
             {
-                entity.CreatedBy = entity.ModifiedBy;
+                entity.CreatedBy = entity.ModifiedBy ?? "_unknown";
                 entity.CreatedDate = entity.ModifiedDate;
             }
         }
