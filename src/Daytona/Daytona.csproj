@@ -12,7 +12,7 @@
     <Description>
       This product is a common library and it is used for the Atlantis web and api intefaces.
     </Description>
-    <Version>1.0.7</Version>
+    <Version>1.1.0</Version>
     <AssemblyName>Daytona</AssemblyName>
     <RepositoryUrl>https://github.com/akhakpouri/daytona.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
