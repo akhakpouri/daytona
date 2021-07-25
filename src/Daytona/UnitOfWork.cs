@@ -33,12 +33,12 @@ namespace Daytona
         {
             if (entry.Entity is not AuditableEntity entity) return;
 
-            entity.ModifiedBy = UserAccessor.UserName ?? "_unknown";
+            entity.ModifiedBy = UserAccessor?.UserName ?? "_unknown";
             entity.ModifiedDate = DateTime.UtcNow;
 
             if (entry.State == EntityState.Added)
             {
-                entity.CreatedBy = entity.ModifiedBy ?? "_unknown";
+                entity.CreatedBy = entity.ModifiedBy;
                 entity.CreatedDate = entity.ModifiedDate;
             }
         }
