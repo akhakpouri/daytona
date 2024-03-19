@@ -1,43 +1,38 @@
+#nullable enable
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Daytona.Models;
+using Daytona.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 
-namespace Daytona
+namespace Daytona;
+
+public class ReadOnlyRepository<TEntity>(DbContext context) : IReadOnlyRepository<TEntity>
+    where TEntity : BaseEntity
 {
-    public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity>
-        where TEntity : AuditableEntity
+    protected DbContext Context { get; private set; } = context ?? throw new ArgumentNullException(nameof(context));
+
+    public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
     {
-        protected DbContext Context { get; private set; }
+        var set = Set();
+        if (include != null)
+            set = include(set);
 
-        public ReadOnlyRepository(DbContext context)
-        {
-            Context = context ?? throw new ArgumentNullException(nameof(context));
-        }
-
-        public async Task<TEntity> GetById(int id, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null)
-        {
-            var set = Set();
-            if (include != null)
-                set = include(set);
-            return await set.FirstOrDefaultAsync(x => x.Id == id).ConfigureAwait(false);
-        }
-
-        public IQueryable<TEntity> FilterBy(Expression<Func<TEntity, bool>> expression, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null)
-        {
-            var set = Set();
-            if (include != null)
-                set = include(set);
-
-            return set.Where(expression);
-        }
-
-        private IQueryable<TEntity> Set()
-        {
-            return Context.Set<TEntity>();
-        }
+        return set.Where(expression);
     }
+
+    public async Task<TEntity?> GetById(int id,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+    {
+        var set = Set();
+        if (include != null)
+            set = include(set);
+        return await set.FirstOrDefaultAsync(x => x.Id == id).ConfigureAwait(false);
+    }
+
+    IQueryable<TEntity> Set()
+        => Context.Set<TEntity>();
 }

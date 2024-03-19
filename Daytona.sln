@@ -3,9 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daytona", "Daytona\Daytona.csproj", "{DA3B70CB-C74D-4633-A8AC-042F1856D7CB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daytona.Test", "Daytona.Test\Daytona.Test.csproj", "{20B1BDED-52B5-43AC-97C1-6B8D6F7972FD}"
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daytona", "src\Daytona\Daytona.csproj", "{AAC2418D-F3C5-44F3-A0A8-7D620DBFA66E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +20,10 @@ Global
 		{20B1BDED-52B5-43AC-97C1-6B8D6F7972FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20B1BDED-52B5-43AC-97C1-6B8D6F7972FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20B1BDED-52B5-43AC-97C1-6B8D6F7972FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC2418D-F3C5-44F3-A0A8-7D620DBFA66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC2418D-F3C5-44F3-A0A8-7D620DBFA66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC2418D-F3C5-44F3-A0A8-7D620DBFA66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC2418D-F3C5-44F3-A0A8-7D620DBFA66E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
