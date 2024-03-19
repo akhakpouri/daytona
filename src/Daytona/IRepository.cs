@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using Daytona.Models;
+using Daytona.Entities;
 
 namespace Daytona
 {
-    public interface IRepository<T> : IReadOnlyRepository<T> where T : AuditableEntity
+    public interface IRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : BaseEntity
     {
         Task Delete(int id);
-        void Save(T entity);
+        void Save(TEntity entity);
     }
 }
