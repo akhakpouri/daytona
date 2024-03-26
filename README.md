@@ -1,3 +1,4 @@
+[![Build & Pack](https://github.com/akhakpouri/daytona/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/akhakpouri/daytona/actions/workflows/ci.yml)
 # Daytona
 
 This is a simple little library built to solve a complex problem - wrap your queries inside of a single `unit-of-work` to use accordingly.
