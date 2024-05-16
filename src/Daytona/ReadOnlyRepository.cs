@@ -12,7 +12,7 @@ namespace Daytona;
 public class ReadOnlyRepository<TEntity>(DbContext context) : IReadOnlyRepository<TEntity>
     where TEntity : BaseEntity
 {
-    protected DbContext Context { get; private set; } = context ?? throw new ArgumentNullException(nameof(context));
+    protected DbContext Context { get; } = context ?? throw new ArgumentNullException(nameof(context));
 
     public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
