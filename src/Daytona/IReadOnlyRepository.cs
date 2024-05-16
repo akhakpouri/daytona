@@ -10,6 +10,9 @@ namespace Daytona
 {
     public interface IReadOnlyRepository<TEntity> where TEntity : BaseEntity
     {
+        Task<bool> AnyAsync(Expression<Func<TEntity, bool>> expression);
+        Task<int> CountAsync(Expression<Func<TEntity, bool>> expression,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null);
         Task<TEntity?> GetById(int id,
             Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null);
 

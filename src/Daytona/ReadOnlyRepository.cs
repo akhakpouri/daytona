@@ -24,6 +24,21 @@ public class ReadOnlyRepository<TEntity>(DbContext context) : IReadOnlyRepositor
         return set.Where(expression);
     }
 
+    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> expression)
+    {
+        var set = Set();
+        return await set.AnyAsync(expression);
+    }
+
+    public async Task<int> CountAsync(Expression<Func<TEntity, bool>> expression,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+    {
+        var set = Set();
+        if (include != null)
+            set = include(set);
+        return await set.Where(expression).CountAsync();
+    }
+
     public async Task<TEntity?> GetById(int id,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
     {
