@@ -65,6 +65,35 @@ public interface IYourManager<TDto> : IManager<IYourUnitOfWork, TDto> where TDto
 ```
 After this, you can choose to create more specific manager level interfaces by inheriting your wrapping interface, or continue to use this interface for all CRUD operations.
 
+### Bulk Edit &amp; Delete
+
+This library uses [efficient update & delete](https://learn.microsoft.com/en-us/ef/core/performance/efficient-updating?tabs=ef7) to manipulate multiple records using a single query. You can do this by invoking the `BulkUpdate` or `BulkDelete` methods defined in the `Repository`.
+
+#### Update
+```cs
+    await _unitOfWork.EntityRepository.BulkUpdate(
+        a => true, 
+        a => a.SetProperty(e => e.Property = value));
+```
+The method above produces the following sql query statement.
+```sql
+UPADTE [Entity]
+SET [Property] = _value_
+WHERE
+    1 = 1;
+```
+
+#### Delete
+```cs
+    await _unitOfWork.EntityRepository.BulkDelete(a => a.property = value);
+```
+The method above produces the following sql query statement.
+```sql
+DELETE FROM [Entity]
+WHERE
+    [property] = _value_;
+```
+
 #### Let's talk Implementation!
 
 When implementing your manager, you must inherit from the base abstract `Manager` class as well as the interface defined above.
